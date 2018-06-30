@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Captain-source.iml" filepath="$PROJECT_DIR$/Captain-source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android4module/android4module.iml" filepath="$PROJECT_DIR$/android4module/android4module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/degsinpattern/degsinpattern.iml" filepath="$PROJECT_DIR$/degsinpattern/degsinpattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eventbusdemo/eventbusdemo.iml" filepath="$PROJECT_DIR$/eventbusdemo/eventbusdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/leakcanary/leakcanary.iml" filepath="$PROJECT_DIR$/leakcanary/leakcanary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewevent/viewevent.iml" filepath="$PROJECT_DIR$/viewevent/viewevent.iml" />
+    </modules>
+  </component>
+</project>
