@@ -6,8 +6,6 @@ import android.util.LruCache;
 
 import java.util.LinkedHashMap;
 
-import okhttp3.internal.cache.DiskLruCache;
-
 /**
  * Created by wds on 2018-4-18.
  */

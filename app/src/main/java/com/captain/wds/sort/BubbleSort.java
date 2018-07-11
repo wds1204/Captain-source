@@ -45,6 +45,17 @@ public class BubbleSort {
 		arr[j] = temp;
 	}
 
+	public static void bubblesort(int array[]) {
+		for (int i = 0; i < array.length; i++) {
+
+			for (int j = 0; j < array.length - 1; j++) {
+				if (array[i] > array[j + 1]) {
+					swap(array, i, j + 1);
+
+				}
+			}
+		}
+	}
 	public void insertionSort(int array[]) {
 		int i, j, t = 0;
 		for (i = 1; i < array.length; i++) {

@@ -1,5 +1,6 @@
 package com.captain.wds.android4module;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,8 @@ public class MainActivity extends AppCompatActivity {
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-//		Intent intent = new Intent(this, .class);
-//		startActivity(intent);
+		Intent intent = new Intent(this, SecActivity.class);
+		startActivity(intent);
 		Log.e("TAG", "onCreate :" + savedInstanceState);
 	}
 

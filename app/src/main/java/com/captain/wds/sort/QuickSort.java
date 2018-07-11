@@ -55,4 +55,26 @@ public class QuickSort {
 
 	}
 
+	public void quick(int []src,/*左边界*/int i,/*右边界*/int j) {
+
+		if (i < j) {
+			int left = i, right = j, inser = src[i];
+
+
+			while (left < right) {
+
+				while (left < right && inser < src[right]) right--;
+				if (left < right) src[left++] = src[right];
+				while (left<right&&inser>src[left]) left++;
+				if(left<right) src[right--] = src[left];
+			}
+
+			src[left] = inser;
+
+			quick(src, i, left - 1);
+			quick(src, left + 1, j);
+		}
+
+	}
+
 }

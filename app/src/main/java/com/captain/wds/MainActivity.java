@@ -16,8 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.captain.wds.aidl.AIDLService;
 import com.captain.wds.lruCache.TestLruCache;
+import com.captain.wds.service.MyService;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -86,20 +86,20 @@ public class MainActivity extends FragmentActivity {
         //LruChche的是使用
         LruCache<String, Bitmap> lruCache = TestLruCache.getLruCache();
 
-//        Intent service = new Intent(this, MyService.class);
-         /*startService的方式开启服务，第二次开启的时候不会在执行onCreate方法*/
+        Intent service = new Intent(this, MyService.class);
+//         /*startService的方式开启服务，第二次开启的时候不会在执行onCreate方法*/
+//        startService(service);
+
 //        startService(service);
 //
 //        startService(service);
-
-//        startService(service);
-         /*bindService方式开启的服务，第二次绑定时候不会在执行onCreate onBind方法*/
-//        bindService(service, conn, BIND_AUTO_CREATE);
+//         /*bindService方式开启的服务，第二次绑定时候不会在执行onCreate onBind方法*/
+        bindService(service, conn, BIND_AUTO_CREATE);
 //        bindService(service, conn, BIND_AUTO_CREATE);
 
 
-        Intent intent = new Intent(this, AIDLService.class);
-        startService(intent);
+//        Intent intent = new Intent(this, AIDLService.class);
+//        startService(intent);
 
     }
     /*===========lruccache put操作的源码 写入缓存============*/

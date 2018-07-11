@@ -28,6 +28,7 @@ public class HashMapTest {
         tempMap.put("c", 48);
         tempMap.put("d", 96);
 
+
         /*===========Map多种遍历方式============*/
         //方式一：map.entrySet 遍历
         Iterator<Map.Entry<String, Integer>> iterator = tempMap.entrySet().iterator();
@@ -109,6 +110,22 @@ public class HashMapTest {
             /*没有重写equals和hashCode方法   运行结果为空*/
             System.out.println("value is null");
         }
+    }
+
+    public static void transfer(int[] table, int[] newTable) {
+
+        int[] src = table;//src 引用旧的数组
+
+        int newCaptacity = newTable.length;
+
+        for (int i = 0; i < src.length; i++) {//遍历旧的数组
+            int e = src[i];  //获取旧数组元素
+
+
+
+
+        }
+
     }
 
     @Override

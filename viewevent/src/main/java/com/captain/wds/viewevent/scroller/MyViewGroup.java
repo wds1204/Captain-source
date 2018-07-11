@@ -87,6 +87,8 @@ public class MyViewGroup extends ViewGroup {
 	}
 
 
+	//EXACTLY:match_parent 或确切的数
+	//AT_MOST：wrap_content
 
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
