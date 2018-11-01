@@ -59,7 +59,10 @@ public class MyArrayList<AnyType> implements Iterable<AnyType>
         theItems[index] = newVal;
         return old;
     }
-
+    public boolean add(AnyType x) {
+        add(size(), x);
+        return true;
+    }
     public void add(int index, AnyType x)
     {
         //数组不够大，则扩大数组
