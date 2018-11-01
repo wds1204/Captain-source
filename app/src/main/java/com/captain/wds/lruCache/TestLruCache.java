@@ -6,8 +6,6 @@ import android.util.LruCache;
 
 import java.util.LinkedHashMap;
 
-import okhttp3.internal.cache.DiskLruCache;
-
 /**
  * Created by wds on 2018-4-18.
  */
@@ -29,15 +27,15 @@ public class TestLruCache {
         linkedHashMap.put(3, 3);
         linkedHashMap.put(4, 4);
         linkedHashMap.put(5, 5);
-        for (LinkedHashMap.Entry<Integer, Integer> entry : linkedHashMap.entrySet()) {
-            System.out.print(String.valueOf(entry.getValue()) + "\t");
-        }
+//        for (LinkedHashMap.Entry<Integer, Integer> entry : linkedHashMap.entrySet()) {
+//            System.out.print(String.valueOf(entry.getValue()) + "\t");
+//        }
         linkedHashMap.get(3);
         linkedHashMap.get(4);
         System.out.println("");
-        for (LinkedHashMap.Entry<Integer, Integer> entry : linkedHashMap.entrySet()) {
-            System.out.print(String.valueOf(entry.getValue()) +"\t");
-        }
+//        for (LinkedHashMap .Entry<Integer, Integer> entry : linkedHashMap.entrySet()) {
+//            System.out.print(String.valueOf(entry.getValue()) +"\t");
+//        }
 
 //        tempLruCache();
 

@@ -10,68 +10,58 @@ public class CountDownLatchTemp {
     ///////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) throws InterruptedException {
         final CountDownLatch countDownLatch = new CountDownLatch(5);
-        new Thread() {
-            public void run() {
-                try {
-                    sleep(1000);
-                    System.out.print("等一秒。。。");
-                    countDownLatch.countDown();
+        new Thread(()->{
+            try {
+                Thread.sleep(1000);
+                System.out.print("等一秒。。。");
+                countDownLatch.countDown();
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }.start();
-        new Thread() {
-            public void run() {
-                try {
-                    sleep(2000);
-                    System.out.print("等两秒。。。");
-                    countDownLatch.countDown();
+        }).start();
+        new Thread(()->{
+            try {
+                Thread.sleep(2000);
+                System.out.print("等两秒。。。");
+                countDownLatch.countDown();
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }.start();
-        new Thread() {
-            public void run() {
-                try {
-                    sleep(3000);
-                    System.out.print("等三秒。。。");
-                    countDownLatch.countDown();
+        }).start();
+        new Thread(()->{
+            try {
+                Thread.sleep(3000);
+                System.out.print("等三秒。。。");
+                countDownLatch.countDown();
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }.start();
-        new Thread() {
-            public void run() {
-                try {
-                    sleep(4000);
-                    System.out.print("等四秒。。。");
-                    countDownLatch.countDown();
+        }).start();
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        new Thread(()->{
+            try {
+                Thread.sleep(4000);
+                System.out.print("等四秒。。。");
+                countDownLatch.countDown();
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }.start();
-        new Thread() {
-            public void run() {
-                try {
-                    sleep(5000);
-                    System.out.print("等五秒。。。");
-                    countDownLatch.countDown();
+        }).start();
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        new Thread(()->{
+            try {
+                Thread.sleep(5000);
+                System.out.print("等五秒。。。");
+                countDownLatch.countDown();
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }.start();
-
+        }).start();
         countDownLatch.await();
 
         System.out.print("统一执行");
