@@ -118,7 +118,7 @@ public void handleMessage(Message msg) {
 
 
 
-###ContentProvider的工作过程
+### ContentProvider的工作过程
 
 
 是一种内容共享型组件，它通过binder向其他组件乃至其他应用提供数据。
