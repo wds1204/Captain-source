@@ -2,7 +2,6 @@ package com.captain.wds.degsinpattern;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,11 +32,8 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("")
                 .setView(new TextView(MainActivity.this))
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                .setPositiveButton("确定", (dialog, which) -> {
 
-                    }
                 })
                 .setNegativeButton("取消", null)
                 .show();
