@@ -33,12 +33,18 @@ public class MainActivity extends FragmentActivity {
 
         }
     };
+    private Handler handler = new Handler(){
+        public void handleMessage(Message msg){
 
+        }
+    };
     private static class MyHandler extends Handler{
         private WeakReference<MainActivity> weakReference ;
 
 
+
         public MyHandler(MainActivity activity) {
+            super();
             this.weakReference = new WeakReference<MainActivity>(activity);
 
         }

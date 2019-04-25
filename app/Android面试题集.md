@@ -207,6 +207,11 @@ Activity的启动流程图（放大可查看）如下所示：
 
 ### Android Handler机制是做什么的，原理了解吗？
 
+
+- UI线程中创建Handler与之对应Looper和MessageQueue,在子线程中发送消息，最终消息入队(MessageQueue.enqueueMessage()),
+- 回到ActivityThread的main()方法中，Looper.prepare()会实例化MessageQueue和当前Thread，并且通过ThreadLocal对象实现对Looper和当前线程的绑定，
+- Looper会一直不断的循环从消息队列中通过MessageQuene.next方法获取消息，然后通过代码msg.target.dispatchMessage(msg)让该msg所绑定的
+- Handler（Message.target） 执行dispatchMessage方法以实现对Message的处理。
 Android消息循环流程图如下所示：
 
 <img src="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/native/process/android_handler_structure.png"/>

@@ -115,21 +115,4 @@ public void handleMessage(Message msg) {
         //...
     }
 ````
-
-
-
-### ContentProvider的工作过程
-
-
-是一种内容共享型组件，它通过binder向其他组件乃至其他应用提供数据。
-
-当ContentProvider所在的进程启动时，ContentProvider会同时启动并被发布到AMS中。
-ContentProvider的onCreat要优先于Application的onCreate执行
-
-
-ContentProvider 提供增删改查四个接口，这四个方法都是通过Binder来调用的，外界无法直接访问ContentProvider，
-它只能通过AMS根据Uri来获取对应的ContentProvider的Binder接口IContentProvider，然后再通过IContentProvider
-来访问ContentProvider中的数据源。
-
-ActivityThread的main方法中，首先会创建ActivityThread实例并调用attach方法，在attach方法中会将ApplicationThread对象通过AMS的attachApplication方法跨进程传递给AMS，最终在AMS中完成ContentProvide的创建，通过各种方法的透传，有调用了ApplicationThread的bindApplication（这也是夸进程），在bindApplication方法中发送一个消息给mH,接到消息后调用ActivityThread的handleBindApplication方法。在handleBindApplication中完成Application的创建和ContentPrivate的创建
             
