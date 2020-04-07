@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.LruCache;
 import android.view.MotionEvent;
@@ -21,6 +22,16 @@ import com.captain.wds.service.MyService;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends FragmentActivity {
 
@@ -33,11 +44,8 @@ public class MainActivity extends FragmentActivity {
 
         }
     };
-    private Handler handler = new Handler(){
-        public void handleMessage(Message msg){
+    private String baseurl="https://api.github.com/";
 
-        }
-    };
     private static class MyHandler extends Handler{
         private WeakReference<MainActivity> weakReference ;
 
@@ -58,28 +66,22 @@ public class MainActivity extends FragmentActivity {
         doBeforeSetcontentView();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.bt).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
-            }
+        findViewById(R.id.bt).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
         });
-        findViewById(R.id.bt_2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.bt_2).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ThridActivity.class);
+            startActivity(intent);
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ThridActivity.class);
-                startActivity(intent);
-
-            }
         });
 
         MyHandler myHandler = new MyHandler(this);
         Message obtain = Message.obtain();
+        Message.obtain(myHandler);
 
-        myHandler.sendMessage(obtain);
+
+        myHandler.sendMessageDelayed(obtain,1000);
         myHandler.post(new Runnable() {
             @Override public void run() {
 
@@ -235,6 +237,8 @@ public class MainActivity extends FragmentActivity {
      */
     private void doBeforeSetcontentView() {
 
+
+
         // 无标题
 //		requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 设置竖屏
@@ -277,4 +281,41 @@ public class MainActivity extends FragmentActivity {
     @Override public boolean dispatchTouchEvent(MotionEvent ev) {
         return super.dispatchTouchEvent(ev);
     }
+
+
+   public void  retrofitTest(){
+       Retrofit retrofit = new Retrofit.Builder().baseUrl(baseurl).build();
+
+       APIService apiService = retrofit.create(APIService.class);
+
+       Map<String, String> map=new HashMap<>();
+       Call<ResponseBody> call = apiService.testFormUrl("Jack", 123456);
+       // @Multipart
+       MediaType textType = MediaType.parse("text/plain"); // 文本类型
+       RequestBody name = RequestBody.create(textType, "Jack");
+       RequestBody pwd = RequestBody.create(textType, "123456");
+       RequestBody file = RequestBody.create(MediaType.parse("application/octet-stream"), "这里是模拟文件的内容");
+
+       MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", "test.txt", file);
+
+
+       //发送网络请求(异步)
+       call.enqueue(new Callback<ResponseBody>() {
+           //请求成功时回调
+           @Override
+           public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+               //请求处理,输出结果
+               assert response.body() != null;
+               response.body().toString();
+           }
+
+           //请求失败时候的回调
+           @Override
+           public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable throwable) {
+               System.out.println("连接失败");
+           }
+       });
+
+
+   }
 }

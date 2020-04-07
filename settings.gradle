@@ -1,1 +1,1 @@
-include ':app', ':mylibrary', ':eventbusdemo', ':degsinpattern', ':viewevent', ':android4module', ':leakcanary'
+include ':app', ':mylibrary', ':eventbusdemo', ':degsinpattern', ':viewevent', ':android4module', ':leakcanary', ':open_source_library', ':myapplication'
